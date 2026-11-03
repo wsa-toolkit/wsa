@@ -1,0 +1,30 @@
+Source: wsa
+Section: net
+Priority: optional
+Maintainer: Astite Abdelkader <abdelkader.astite@gmail.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+Homepage: https://github.com/wsa-toolkit/wsa
+Rules-Requires-Root: no
+
+Package: wsa
+Architecture: all
+Depends: python3 (>= 3.8),
+         tmux,
+         aircrack-ng,
+         iw,
+         network-manager,
+         hashcat,
+         ${misc:Depends}
+Recommends: hostapd-mana,
+            john,
+            tshark
+Description: Wireless Security Assessment Framework
+ WSA is a tmux-based wireless security assessment conductor.
+ .
+ It supports manual and automated assessment flows for OPEN, WEP,
+ WPA-Personal, WPA3, and WPA-Enterprise networks, with NIST SP 800-53
+ remediation reporting and a teaching-grade methodology reference
+ for each protocol.
+ .
+ Must be run as root: sudo wsa

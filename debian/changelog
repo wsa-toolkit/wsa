@@ -1,0 +1,15 @@
+wsa (3.1.0) unstable; urgency=medium
+
+  * Initial public release.
+  * Manual and automated assessment flows for OPEN, WEP, WPA-Personal,
+    WPA3, and WPA-Enterprise networks.
+  * Rogue-side handshake filtering — mask and wordlist attacks only
+    run against material that can produce a real target recovery.
+  * NIST SP 800-53 remediation reporting with per-report family legend.
+  * Teaching-grade methodology reference with peer-reviewed citations
+    for each protocol.
+  * Multi-layer connectivity test for OPEN flow (ip / gw / icmp / http)
+    instead of ICMP-only, eliminating false negatives on guest APs that
+    block ICMP but permit HTTP.
+
+ -- Astite Abdelkader <abdelkader.astite@gmail.com>  Tue, 03 Nov 2026 12:00:00 +0000

@@ -1,0 +1,112 @@
+.TH WSA 1 "2026-11-03" "wsa 3.1.0" "User Commands"
+.SH NAME
+wsa \- Wireless Security Assessment Framework
+.SH SYNOPSIS
+.B wsa
+[\fB\-\-auto\fR]
+[\fB\-\-wordlist\fR \fIPATH\fR | \fB\-\-mask\fR \fIMASK\fR]
+.br
+.B wsa
+\fB\-\-role=\fINAME\fR
+.SH DESCRIPTION
+.B wsa
+is a tmux-based wireless security assessment conductor for OPEN, WEP,
+WPA-Personal, WPA3, and WPA-Enterprise networks. It drives aircrack-ng,
+hostapd-mana, hashcat, and john from a single terminal UI and produces
+NIST SP 800-53 remediation reports.
+.PP
+It is intended for two audiences: students (methodology text, references,
+and teaching-grade walkthroughs for each protocol) and practitioners
+(structured capture, filter, and recovery pipeline with a plain-text
+assessment report ready to hand to a reviewer).
+.PP
+.BR wsa " must be run as root:"
+wireless operations require
+.B CAP_NET_ADMIN
+and raw socket access.
+.SH OPTIONS
+.TP
+.B \-\-auto
+Run an automated assessment. Worker panes deploy normally (real-time
+traffic is visible), but the conductor signals each step automatically.
+If neither
+.B \-\-wordlist
+nor
+.B \-\-mask
+is supplied, capture-only mode is used.
+.TP
+.BI \-\-wordlist " PATH"
+Use a dictionary wordlist as the recovery strategy. Implies
+.BR \-\-auto .
+.TP
+.BI \-\-mask " MASK"
+Use a hashcat-style mask as the recovery strategy. Tokens:
+.BR ?l " (lower),"
+.BR ?u " (upper),"
+.BR ?d " (digit),"
+.BR ?s " (special),"
+.BR ?a " (all),"
+.BR ?1..?9 " (custom charsets)."
+Implies
+.BR \-\-auto .
+.TP
+.BI \-\-role= NAME
+Internal use. Worker panes re-exec the engine with
+.BR \-\-role=<name> .
+Valid names:
+.BR capture ,
+.BR mac ,
+.BR ping ,
+.BR deauth ,
+.BR fakeauth ,
+.BR arpreplay ,
+.BR evil_twin_personal ,
+.BR evil_twin_enterprise ,
+.BR analyse .
+.SH EXAMPLES
+.TP
+.B sudo python3 wsa.py
+Launch the interactive manual conductor.
+.TP
+.B sudo python3 wsa.py \-\-auto \-\-mask '?d?d?d?d?d?d?d?d'
+Automated assessment using an 8-digit numeric mask.
+.TP
+.B sudo python3 wsa.py \-\-auto \-\-wordlist /usr/share/wordlists/rockyou.txt
+Automated assessment using a dictionary wordlist.
+.SH FILES
+.TP
+.I ~/.config/wsa/settings.json
+Persisted settings (adapters, themes, wordlist folder, thresholds).
+.TP
+.I .wsa_current
+Pointer to the active assessment folder.
+.TP
+.I assessments/<essid>/
+Per-target evidence and reports.
+.TP
+.I /tmp/wsa_debug.log
+Conductor debug trace (useful for support).
+.SH ENVIRONMENT
+.TP
+.B SUDO_USER
+When invoked under sudo, WSA uses this to determine the correct user
+for file ownership of assessment folders and reports.
+.SH NOTES
+WEP recovery requires approximately 50,000 IVs for reliable PTW
+recovery. The failure card reports how many IVs were actually collected
+so the operator can re-run capture for longer.
+.PP
+The analysis console filters rogue-side handshakes (those that crack
+with the fake rogue PSK) out of subsequent attacks, so mask and
+wordlist runs only test material that can produce a real target
+recovery.
+.SH SEE ALSO
+.BR aircrack-ng (1),
+.BR hashcat (1),
+.BR john (1),
+.BR hostapd (8),
+.BR tmux (1)
+.SH AUTHOR
+Written by Astite Abdelkader (@443k). Licensed GPL-2.0-or-later.
+.PP
+Project home: https://github.com/wsa-toolkit/wsa

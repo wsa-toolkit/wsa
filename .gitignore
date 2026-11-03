@@ -1,0 +1,17 @@
+assessments/
+wordlists/
+*.bak.*
+*.pyc
+__pycache__/
+.wsa_current
+.wsa_settings.json
+debian/wsa/
+debian/.debhelper/
+debian/debhelper-build-stamp
+debian/files
+debian/*.substvars
+../wsa_*.deb
+../wsa_*.buildinfo
+../wsa_*.changes
+*.tmp
+.DS_Store
