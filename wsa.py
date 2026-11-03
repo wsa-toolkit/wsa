@@ -102,7 +102,7 @@ import glob
 # SECTION 1 · CONSTANTS + JSON SETTINGS
 # ═══════════════════════════════════════════════════════════════════════════
 
-VERSION         = "3.1.0"
+VERSION         = "3.1.1"
 BASE            = os.path.dirname(os.path.abspath(__file__))
 SESSION         = "wsa_framework"
 SYSTEM_SETTINGS = "/etc/wsa/settings.json"        # patchB: package default
@@ -5457,9 +5457,13 @@ def run_analysis_console():
 
         if not targets:
             try:
-                input(f"   {LBL}press ENTER to refresh ▸{R} ")
+                _a = input(
+                    f"   {LBL}press ENTER to refresh · 0 to return ▸{R} "
+                ).strip()
             except (KeyboardInterrupt, EOFError):
-                continue
+                return
+            if _a == "0":
+                return
             continue
 
         try:

@@ -1,3 +1,12 @@
+wsa (3.1.1) unstable; urgency=medium
+
+  * Fix: analysis session with no captured targets trapped the
+    operator — both ENTER and Ctrl+C redrew the same screen with
+    no escape to the main menu. Now `0` returns to the menu and
+    Ctrl+C also returns (no infinite loop).
+
+ -- Astite Abdelkader <abdelkader.astite@gmail.com>  Tue, 04 Nov 2026 12:00:00 +0000
+
 wsa (3.1.0) unstable; urgency=medium
 
   * Initial public release.
