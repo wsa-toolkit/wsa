@@ -1,0 +1,28 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compile wsa.py
+        run: python3 -m py_compile wsa.py
+
+      - name: Version matches man page
+        run: |
+          V=$(grep '^VERSION' wsa.py | sed 's/.*"\(.*\)".*/\1/')
+          M=$(head -1 man/wsa.1 | sed -n 's/.*"wsa \([^"]*\)".*/\1/p')
+          echo "VERSION=$V  MAN=$M"
+          test "$V" = "$M" || { echo "version mismatch"; exit 1; }
+
+      - name: Changelog is well-formed
+        run: |
+          head -1 debian/changelog | grep -q '^wsa (' \
+            && echo "changelog OK"
