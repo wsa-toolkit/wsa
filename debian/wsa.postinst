@@ -1,0 +1,25 @@
+#!/bin/sh
+set -e
+
+if ! command -v hostapd-mana >/dev/null 2>&1; then
+    cat <<'EOF'
+
+  === WSA install note ===
+
+  hostapd-mana is not installed.
+
+  WSA uses hostapd-mana for WPA-Personal, WPA3, and
+  WPA-Enterprise evil-twin flows. Build from source:
+
+      git clone https://github.com/sensepost/hostapd-mana.git
+      cd hostapd-mana
+      sudo make install
+
+  WEP, OPEN, and the analysis console work without it.
+
+  ========================
+
+EOF
+fi
+
+exit 0

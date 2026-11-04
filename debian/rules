@@ -6,4 +6,5 @@
 override_dh_auto_install:
 	install -D -m 0755 wsa.py debian/wsa/usr/share/wsa/wsa.py
 	install -D -m 0644 man/wsa.1 debian/wsa/usr/share/man/man1/wsa.1
+	mkdir -p debian/wsa/usr/bin
 	ln -s ../share/wsa/wsa.py debian/wsa/usr/bin/wsa

@@ -1,3 +1,14 @@
+wsa (3.1.3) unstable; urgency=medium
+
+  * Packaging: move hostapd-mana from Recommends to Suggests
+    (not in Debian/Kali archive — built from source per README).
+  * License clarity: prepend GPL-2.0-or-later boilerplate to LICENSE
+    so the file matches debian/copyright and GitHub's license detector.
+  * README: clarify "Python stdlib only (no pip installs)" phrasing.
+  * Version bump to 3.1.3.
+
+ -- Astite Abdelkader <abdelkader.astite@gmail.com>  Thu, 05 Nov 2026 12:00:00 +0000
+
 wsa (3.1.2) unstable; urgency=medium
 
   * Analysis menu escape when no targets; version bump to 3.1.2; refresh

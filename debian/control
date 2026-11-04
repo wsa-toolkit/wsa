@@ -16,9 +16,8 @@ Depends: python3 (>= 3.8),
          network-manager,
          hashcat,
          ${misc:Depends}
-Recommends: hostapd-mana,
-            john,
-            tshark
+Recommends: john, tshark
+Suggests: hostapd-mana
 Description: Wireless Security Assessment Framework
  WSA is a tmux-based wireless security assessment conductor.
  .
