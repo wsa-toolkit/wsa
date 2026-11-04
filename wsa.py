@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2026 Astite Abdelkader
 # ==========================================================================
-# WSA FRAMEWORK · ENGINE  ·  wsa.py  ·  v3.1.0
+# WSA FRAMEWORK · ENGINE  ·  wsa.py  ·  v3.1.2
 # ==========================================================================
 # REFERENCE ARCHIVE  ·  read this before touching anything below
 # --------------------------------------------------------------------------
@@ -37,7 +37,7 @@
 #
 # CHANGES
 # --------------------------------------------------------------------------
-# v3.1.0  ·  current
+# v3.1.2  ·  current
 #   · worker panes: COMMANDS / ADAPTER / TARGET / OPTIONS unified layout
 #   · real values substituted for <AP> <CH> <MON> <ADAPTER_MAC> <STATION_MAC>
 #   · capture pane gains menu — Ctrl+C stops and returns, no auto-relaunch
@@ -102,7 +102,7 @@ import glob
 # SECTION 1 · CONSTANTS + JSON SETTINGS
 # ═══════════════════════════════════════════════════════════════════════════
 
-VERSION         = "3.1.1"
+VERSION         = "3.1.2"
 BASE            = os.path.dirname(os.path.abspath(__file__))
 SESSION         = "wsa_framework"
 SYSTEM_SETTINGS = "/etc/wsa/settings.json"        # patchB: package default

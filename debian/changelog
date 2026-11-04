@@ -1,3 +1,10 @@
+wsa (3.1.2) unstable; urgency=medium
+
+  * Analysis menu escape when no targets; version bump to 3.1.2; refresh
+    man page and in-file version strings.
+
+ -- Astite Abdelkader <abdelkader.astite@gmail.com>  Wed, 04 Nov 2026 12:12:40 +0100
+
 wsa (3.1.1) unstable; urgency=medium
 
   * Fix: analysis session with no captured targets trapped the
